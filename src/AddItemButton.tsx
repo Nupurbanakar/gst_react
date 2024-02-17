@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 interface AddItemButtonProps {
-  selectedCategory: string;
+  selectedCategory: number;
   itemName: string;
   initialPrice: number;
 }

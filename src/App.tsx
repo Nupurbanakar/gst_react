@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "./DropDown";
 import InputBox from "./InputBox";
 import AddItemButton from "./AddItemButton";
+
 import axios from "axios";
 import { Category } from "./Category";
 
 const App: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<number>(0);
   const [categories, setCategories] = useState<Category[]>([]);
   const [itemName, setItemName] = useState<string>("");
   const [initialPrice, setInitialPrice] = useState<number>(0);
@@ -30,6 +31,11 @@ const App: React.FC = () => {
     }
   };
 
+  const handleCategorySelect = (category_id: number) => {
+    setSelectedCategory(category_id);
+  };
+
+
   return (
     <>
       <div className="container">
@@ -38,7 +44,7 @@ const App: React.FC = () => {
           <Dropdown
             categories={categories}
             selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
+            setSelectedCategory={handleCategorySelect}
           />
         </div>
         <div className="inputbox">
