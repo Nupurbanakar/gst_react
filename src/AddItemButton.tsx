@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 interface AddItemButtonProps {
-  selectedCategory: number;
+  selectedCategory: string;
   itemName: string;
   initialPrice: number;
 }
@@ -20,6 +20,7 @@ const AddItemButton: React.FC<AddItemButtonProps> = ({selectedCategory,itemName,
         name: itemName,
         price: initialPrice
       });
+      
       console.log("Item added!:", response.data);
     } catch (error) {
       console.error("Error adding item:", error);

@@ -7,11 +7,11 @@ import axios from "axios";
 import { Category } from "./Category";
 
 const App: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<number>(0);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [itemName, setItemName] = useState<string>("");
   const [initialPrice, setInitialPrice] = useState<number>(0);
-
+  
   useEffect(() => {
     fetchCategories();
     document.title = "Admin";
@@ -24,14 +24,20 @@ const App: React.FC = () => {
         throw new Error("Failed!");
       }
       const data = await response.data;
+
       setCategories(data);
+
+       data.forEach((category) => {
+         console.log(category.id); 
+       });
+      
       console.log(data)
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  const handleCategorySelect = (category_id: number) => {
+  const handleCategorySelect = (category_id:string) => {
     setSelectedCategory(category_id);
   };
 

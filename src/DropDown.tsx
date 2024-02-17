@@ -1,25 +1,18 @@
 import { Category } from "./Category";
 
-interface DropdownProps {
-  categories: Category[];
-  selectedCategory: number;
-  setSelectedCategory: (value: number) => void;
-}
-
-const Dropdown: React.FC<DropdownProps> = ({
+export default function Dropdown({
   categories,
   selectedCategory,
   setSelectedCategory,
-}) => {
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCategoryId = parseInt(e.target.value);  
-    setSelectedCategory(selectedCategoryId);  
-  };
-
+}: {
+  categories: Category[];
+  selectedCategory: string;
+  setSelectedCategory: (value: string) => void;
+}) {
   return (
     <select
       value={selectedCategory}
-      onChange={handleSelectChange} 
+      onChange={(e) => setSelectedCategory(e.target.value)}
     >
       {categories.map((category) => (
         <option key={category.name} value={category.category_id}>
@@ -28,5 +21,4 @@ const Dropdown: React.FC<DropdownProps> = ({
       ))}
     </select>
   );
-};
-export default Dropdown;
+}

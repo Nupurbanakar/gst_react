@@ -1,5 +1,5 @@
 export interface Category {
-  category_id:number;
+  category_id:string;
   name: string;
   gstRate: number;
 }
